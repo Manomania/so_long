@@ -6,13 +6,23 @@ AUTHOR				=	maximart
 NAME				=	so_long
 HEADER				=	$(INC_DIR)so_long.h
 CC 					= 	cc
-CFLAGS 				= 	-Wall -Wextra -Werror
+CFLAGS 				= 	-Wall -Wextra -Werror -O3
 MLX_FLAGS			=	-L$(MLX_DIR) -l:libmlx_Linux.a -lXext -lX11 -lm
 AR					=	ar rcs
 RM					=	rm -f
-DEBUG				=
 
-SRC_F				=	parsing
+SRC_F				=	init \
+						textures \
+						map_utils \
+						map_validation \
+						player \
+						render \
+						main \
+						display \
+						utils \
+						read_map
+
+
 
 SRC					=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_F)))
 OBJ 				= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_F)))
@@ -49,7 +59,7 @@ clean:					.print_header
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(LIBFT_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
 							@$(MAKE) --silent -C $(LIBFT_DIR) clean
 							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
-							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(LIBFT_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
+							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(MLX_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
 							@$(MAKE) --silent -C $(MLX_DIR) clean
 							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
 
@@ -66,7 +76,7 @@ fclean: 				clean
 make_libft:
 							@$(MAKE) --silent -C $(LIBFT_DIR)
 
-re: 					.print_header fclean $(LIBFT) $(NAME)
+re: 					.print_header fclean all
 
 .print_header:
 							$(call DISPLAY_TITLE)
@@ -118,7 +128,7 @@ COMPILED_SRCS		=	0
 FRAMES				=	⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
 SLEEP_FRAME			=	0.001
 
-SRCS_TO_COMPILE		=	$(shell find -maxdepth 1 -newer $(NAME) -name '*.c' 2>/dev/null | wc -l)
+SRCS_TO_COMPILE		=	$(shell find -maxdepth 0 -newer $(NAME) -name '*.c' 2>/dev/null | wc -l)
 ifeq ($(SRCS_TO_COMPILE),0)
 	SRCS_TO_COMPILE =	$(words $(SRC_F))
 endif
