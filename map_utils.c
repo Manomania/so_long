@@ -12,19 +12,19 @@
 
 #include "so_long.h"
 
-void flood_fill(int x, int y, t_data *data, char **grid_copy)
+void	flood_fill(int x, int y, t_data *data, char **grid_copy)
 {
-	if (!grid_copy || x < 0 || y < 0 || x >= data->map.height || y >= data->map.width)
-		return;
+	if (!grid_copy || x < 0 || y < 0
+		|| (x >= data->map.height || y >= data->map.width))
+		return ;
 	if (grid_copy[x][y] == '1' || grid_copy[x][y] == 'V')
-		return;
-
+		return ;
 	if (grid_copy[x][y] == 'C')
 		data->map.collect.collected++;
 	else if (grid_copy[x][y] == 'E')
 	{
 		data->map.exit.found = 1;
-		return;
+		return ;
 	}
 	grid_copy[x][y] = 'V';
 	flood_fill(x + 1, y, data, grid_copy);
@@ -33,15 +33,14 @@ void flood_fill(int x, int y, t_data *data, char **grid_copy)
 	flood_fill(x, y - 1, data, grid_copy);
 }
 
-char **copy_grid(t_data *data)
+char	**copy_grid(t_data *data)
 {
-	char **grid_copy;
-	int i;
+	char	**grid_copy;
+	int		i;
 
 	grid_copy = malloc(sizeof(char *) * (data->map.height + 1));
 	if (!grid_copy)
 		return (NULL);
-
 	i = 0;
 	while (i < data->map.height)
 	{

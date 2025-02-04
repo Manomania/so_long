@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void init_map_data(t_data *data)
+void init_map_data(t_data* data)
 {
 	data->mlx = NULL;
 	data->win = NULL;
@@ -41,15 +41,16 @@ void	init_display(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		exit_correctly(data);
+		exit_1(data);
 	if (map_is_valid(data))
-		exit_correctly(data);
+		exit_1(data);
 	set_player_position(data);
-	data->win = mlx_new_window(data->mlx, data->map.width * BLOCK, data->map.height * BLOCK, TITLE);
+	data->win = mlx_new_window(data->mlx, data->map.width * BLOCK,
+								data->map.height * BLOCK, TITLE);
 	if (!data->win)
-		exit_correctly(data);
+		exit_1(data);
 	if (load_textures(data))
-		exit_correctly(data);
+		exit_1(data);
 	render_map(data);
 	mlx_hook(data->win, 2, 1L << 0, handle_key, data);
 	mlx_hook(data->win, ON_DESTROY, 0, handle_destroy, data);

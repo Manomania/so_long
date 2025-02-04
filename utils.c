@@ -15,7 +15,10 @@
 int	check_size(t_data *data)
 {
 	if (data->map.height >= 36 || data->map.width >= 65)
-		exit_correctly(data);
+	{
+		ft_printf("%sError: Wrong size map\n%s", RED, RESET);
+		exit_1(data);
+	}
 	return (0);
 }
 
@@ -29,13 +32,6 @@ void	free_grid_copy(char **grid_copy, int height)
 	free(grid_copy);
 }
 
-int	exit_correctly(t_data *data)
-{
-	cleanup_textures(data);
-	free_tab(data);
-	return (1);
-}
-
 void	free_tab(t_data *data)
 {
 	int	i;
@@ -47,5 +43,10 @@ void	free_tab(t_data *data)
 			free(data->map.grid[i]);
 		free(data->map.grid);
 	}
+}
+
+void exit_1(t_data* data)
+{
+	cleanup_textures(data);
 	exit(1);
 }
