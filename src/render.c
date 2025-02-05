@@ -18,10 +18,10 @@ int	handle_destroy(t_data *data)
 	exit(0);
 }
 
-int handle_key(int key, t_data* data)
+int	handle_key(int key, t_data *data)
 {
-	int old_x;
-	int old_y;
+	int	old_x;
+	int	old_y;
 
 	old_x = data->map.play.pos.x;
 	old_y = data->map.play.pos.y;

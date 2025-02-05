@@ -12,23 +12,23 @@
 
 #include "../include/so_long.h"
 
-int load_textures(t_data* data)
+int	load_textures(t_data *data)
 {
-	int b;
+	int	b;
 
 	b = BLOCK;
 	data->img.wall = mlx_xpm_file_to_image(data->mlx,
-											"assets/wall.xpm", &b, &b);
+			"assets/wall.xpm", &b, &b);
 	data->img.player = mlx_xpm_file_to_image(data->mlx,
-											"assets/player.xpm", &b, &b);
+			"assets/player.xpm", &b, &b);
 	data->img.collect = mlx_xpm_file_to_image(data->mlx,
-											"assets/clt.xpm", &b, &b);
+			"assets/clt.xpm", &b, &b);
 	data->img.exit_closed = mlx_xpm_file_to_image(data->mlx,
-												"assets/exit.xpm", &b, &b);
+			"assets/exit.xpm", &b, &b);
 	data->img.exit_open = mlx_xpm_file_to_image(data->mlx,
-												"assets/exit_open.xpm", &b, &b);
+			"assets/exit_open.xpm", &b, &b);
 	data->img.floor = mlx_xpm_file_to_image(data->mlx,
-											"assets/floor.xpm", &b, &b);
+			"assets/floor.xpm", &b, &b);
 	if (!data->img.wall || !data->img.player || !data->img.collect
 		|| (!data->img.exit_closed || !data->img.floor || !data->img.exit_open))
 	{
@@ -38,7 +38,7 @@ int load_textures(t_data* data)
 	return (0);
 }
 
-int cleanup_textures(t_data* data)
+int	cleanup_textures(t_data *data)
 {
 	if (data->img.wall)
 		mlx_destroy_image(data->mlx, data->img.wall);

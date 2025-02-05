@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-static int check_walls(t_data* data)
+static int	check_walls(t_data *data)
 {
 	int	i;
 
@@ -68,10 +68,10 @@ void	count_characters(t_data *data)
 	}
 }
 
-static void find_player_position(t_data* data)
+static void	find_player_position(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < data->map.height)
@@ -83,7 +83,7 @@ static void find_player_position(t_data* data)
 			{
 				data->map.play.pos.x = x;
 				data->map.play.pos.y = y;
-				return;
+				return ;
 			}
 			y++;
 		}
@@ -91,10 +91,10 @@ static void find_player_position(t_data* data)
 	}
 }
 
-static int check_characters(t_data* data)
+static int	check_characters(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < data->map.height)

@@ -45,7 +45,7 @@ void	free_tab(t_data *data)
 	}
 }
 
-void exit_1(t_data* data)
+void	exit_1(t_data *data)
 {
 	cleanup_textures(data);
 	exit(1);

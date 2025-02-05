@@ -24,7 +24,7 @@ static int	my_strlen(char *str)
 
 static int	get_dimensions(int fd, t_data *data)
 {
-	char* line;
+	char	*line;
 
 	line = get_next_line(fd);
 	if (!line)
@@ -49,8 +49,8 @@ static int	get_dimensions(int fd, t_data *data)
 
 static int	fill_map(int fd, t_data *data)
 {
-	char* line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	data->map.grid = malloc(sizeof(char *) * (data->map.height + 1));

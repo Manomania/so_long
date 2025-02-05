@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void init_map_data(t_data* data)
+void	init_map_data(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;
@@ -48,7 +48,7 @@ void	init_display(t_data *data)
 	if (load_textures(data))
 		exit_1(data);
 	data->win = mlx_new_window(data->mlx, data->map.width * BLOCK,
-								data->map.height * BLOCK, TITLE);
+			data->map.height * BLOCK, TITLE);
 	if (!data->win)
 		exit_1(data);
 	render_map(data);
