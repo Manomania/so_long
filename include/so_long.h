@@ -23,8 +23,8 @@
 # define GREEN "\033[092m"
 # define YELLOW "\033[093m"
 
-# include "./minilibx-linux/mlx.h"
-# include "./libft/include/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/include/libft.h"
 # include <limits.h>
 
 enum	e_keyboard
@@ -109,25 +109,25 @@ typedef struct s_data
 	t_count		count;
 }				t_data;
 
-int check_size(t_data* data);
+int		check_size(t_data *data);
 void	free_grid_copy(char **grid_copy, int height);
-int exit_correctly(t_data* data);
+int		exit_correctly(t_data *data);
 void	free_tab(t_data *data);
-int load_textures(t_data* data);
-int cleanup_textures(t_data* data);
+int		load_textures(t_data *data);
+int		cleanup_textures(t_data *data);
 void	render_map(t_data *data);
-int handle_key(int key, t_data* data);
-int handle_destroy(t_data* data);
-int read_map(t_data* data, const char* file);
-void move_player(int key, t_data* data);
-void set_player_position(t_data* data);
-void count_characters(t_data* data);
-int map_is_valid(t_data* data);
-void flood_fill(int x, int y, t_data* data, char** grid_copy);
-char** copy_grid(t_data* data);
-void init_display(t_data* data);
-void init_map_data(t_data* data);
+int		handle_key(int key, t_data *data);
+int		handle_destroy(t_data *data);
+int		read_map(t_data *data, const char *file);
+void	move_player(int key, t_data *data);
+void	set_player_position(t_data *data);
+void	count_characters(t_data *data);
+int		map_is_valid(t_data *data);
+void	flood_fill(int x, int y, t_data *data, char **grid_copy);
+char	**copy_grid(t_data *data);
+void	init_display(t_data *data);
+void	init_map_data(t_data *data);
 void	render_map(t_data *data);
-void exit_1(t_data* data);
+void	exit_1(t_data *data);
 
 #endif

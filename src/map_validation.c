@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 static int check_walls(t_data* data)
 {
@@ -118,9 +118,9 @@ static int check_characters(t_data* data)
 	return (0);
 }
 
-int map_is_valid(t_data* data)
+int	map_is_valid(t_data *data)
 {
-	char** grid_copy;
+	char	**grid_copy;
 
 	if (check_walls(data) || check_size(data) || check_characters(data))
 		exit_1(data);
