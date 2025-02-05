@@ -32,8 +32,8 @@ int load_textures(t_data* data)
 	if (!data->img.wall || !data->img.player || !data->img.collect
 		|| (!data->img.exit_closed || !data->img.floor || !data->img.exit_open))
 	{
-		cleanup_textures(data);
-		return (1);
+		ft_printf("%sError:\nYour file image isn´t readable%s\n", RED, RESET);
+		exit_1(data);
 	}
 	return (0);
 }

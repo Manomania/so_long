@@ -22,7 +22,7 @@ static int check_walls(t_data* data)
 		if (data->map.grid[i][0] != '1'
 			|| (data->map.grid[i][data->map.width - 1] != '1'))
 		{
-			ft_printf("%sError: Walls are invalid%s\n", RED, RESET);
+			ft_printf("%sError:\nWalls are invalid%s\n", RED, RESET);
 			return (1);
 		}
 	}
@@ -32,7 +32,7 @@ static int check_walls(t_data* data)
 		if (data->map.grid[0][i] != '1'
 			|| (data->map.grid[data->map.height - 1][i] != '1'))
 		{
-			ft_printf("%sError: Walls are invalid%s\n", RED, RESET);
+			ft_printf("%sError:\nWalls are invalid%s\n", RED, RESET);
 			return (1);
 		}
 	}
@@ -63,7 +63,7 @@ void	count_characters(t_data *data)
 	if (data->count.c_count == 0 || data->count.p_count != 1
 		|| (data->count.e_count != 1))
 	{
-		ft_printf("%sError: Not enought characters%s\n", RED, RESET);
+		ft_printf("%sError:\nNot enought characters%s\n", RED, RESET);
 		exit_1(data);
 	}
 }
@@ -108,7 +108,7 @@ static int check_characters(t_data* data)
 				&& (data->map.grid[x][y] != '1')
 				&& (data->map.grid[x][y] != 'E'))
 			{
-				ft_printf("%sError: Wrong character found%s\n", RED, RESET);
+				ft_printf("%sError:\nWrong character found%s\n", RED, RESET);
 				return (1);
 			}
 			y++;
@@ -134,7 +134,7 @@ int map_is_valid(t_data* data)
 	if (data->map.exit.found != 1
 		|| (data->map.collect.collected != data->count.c_count))
 	{
-		ft_printf("%sError: Some characters are unreachables%s\n", RED, RESET);
+		ft_printf("%sError:\nSome characters are unreachables%s\n", RED, RESET);
 		return (1);
 	}
 	return (0);

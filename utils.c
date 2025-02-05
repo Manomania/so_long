@@ -16,7 +16,7 @@ int	check_size(t_data *data)
 {
 	if (data->map.height >= 36 || data->map.width >= 65)
 	{
-		ft_printf("%sError: Wrong size map\n%s", RED, RESET);
+		ft_printf("%sError:\nWrong size map\n%s", RED, RESET);
 		exit_1(data);
 	}
 	return (0);

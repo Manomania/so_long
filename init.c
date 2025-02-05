@@ -45,11 +45,11 @@ void	init_display(t_data *data)
 	if (map_is_valid(data))
 		exit_1(data);
 	set_player_position(data);
+	if (load_textures(data))
+		exit_1(data);
 	data->win = mlx_new_window(data->mlx, data->map.width * BLOCK,
 								data->map.height * BLOCK, TITLE);
 	if (!data->win)
-		exit_1(data);
-	if (load_textures(data))
 		exit_1(data);
 	render_map(data);
 	mlx_hook(data->win, 2, 1L << 0, handle_key, data);

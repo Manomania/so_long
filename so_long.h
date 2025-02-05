@@ -129,4 +129,5 @@ void init_display(t_data* data);
 void init_map_data(t_data* data);
 void	render_map(t_data *data);
 void exit_1(t_data* data);
+
 #endif

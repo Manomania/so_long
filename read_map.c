@@ -36,7 +36,8 @@ static int	get_dimensions(int fd, t_data *data)
 		else if (my_strlen(line) != data->map.width)
 		{
 			free(line);
-			ft_printf("%sError: Map isn't rectangular%s\n", RED, RESET);
+			ft_printf("%sError:\nMap isn't rectangular%s\n", RED, RESET);
+			close(fd);
 			exit(1);
 		}
 		data->map.height++;

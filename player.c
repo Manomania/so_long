@@ -38,10 +38,11 @@ void	set_player_position(t_data *data)
 static void	move_data(t_data *data, int x, int y)
 {
 	if (data->map.grid[data->map.play.pos.x][data->map.play.pos.y] == 'E'
-	&& (data->count.c_count == 0))
+		&& (data->count.c_count == 0))
 	{
+		data->map.play.movement++;
 		ft_printf("%s%sYou won in %d moves!!!!%s\n",
-			RESET_LINE, GREEN, data->map.play.movement, RESET);
+				RESET_LINE, GREEN, data->map.play.movement, RESET);
 		cleanup_textures(data);
 		exit(0);
 	}
