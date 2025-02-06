@@ -58,7 +58,8 @@ clean:					.print_header
 							@printf "\n"
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(LIBFT_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
 							@$(MAKE) --silent -C $(LIBFT_DIR) clean
-							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
+							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)"
+							$(call SEPARATOR)
 
 fclean: 				clean
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(NAME)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
@@ -129,7 +130,7 @@ COMPILED_SRCS		=	0
 FRAMES				=	⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
 SLEEP_FRAME			=	0.001
 
-SRCS_TO_COMPILE		=	$(shell find $(SRC_DIR) -newer $(NAME) 2>/dev/null | wc -l)
+SRCS_TO_COMPILE		=	$(shell find $(SRC_DIR) -type f -name "*.c" -newer $(NAME) 2>/dev/null | wc -l)
 ifeq ($(SRCS_TO_COMPILE),0)
 	SRCS_TO_COMPILE =	$(words $(SRC_F))
 endif
