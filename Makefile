@@ -59,9 +59,6 @@ clean:					.print_header
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(LIBFT_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
 							@$(MAKE) --silent -C $(LIBFT_DIR) clean
 							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
-							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(MLX_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
-							@$(MAKE) --silent -C $(MLX_DIR) clean
-							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
 
 fclean: 				clean
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(NAME)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
@@ -71,6 +68,10 @@ fclean: 				clean
 							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(LIBFT)]:"  "$(GREEN)[✓]$(DEF_COLOR)\n"
 							@$(MAKE) --silent -C $(LIBFT_DIR) fclean
 							@printf "$(RED)=> Deleted!$(DEF_COLOR)\n"
+							@printf "\n"
+							@printf "%$(SPACEMENT)b%b" "$(BLUE)[$(MLX_DIR)$(OBJ_DIR)]:" "$(GREEN)[✓]$(DEF_COLOR)\n"
+							@$(MAKE) --silent -C $(MLX_DIR) clean
+							@printf "$(RED)=> Deleted!\n$(DEF_COLOR)\n"
 							$(call SEPARATOR)
 
 make_libft:
@@ -128,7 +129,7 @@ COMPILED_SRCS		=	0
 FRAMES				=	⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
 SLEEP_FRAME			=	0.001
 
-SRCS_TO_COMPILE		=	$(shell find -maxdepth 0 -newer $(NAME) -name '*.c' 2>/dev/null | wc -l)
+SRCS_TO_COMPILE		=	$(shell find $(SRC_DIR) -newer $(NAME) 2>/dev/null | wc -l)
 ifeq ($(SRCS_TO_COMPILE),0)
 	SRCS_TO_COMPILE =	$(words $(SRC_F))
 endif
@@ -138,7 +139,7 @@ define PROGRESS_BAR_PERCENTAGE
 						@if [ $(COMPILED_SRCS) -eq 1 ]; then \
 							printf "$(BLUE)[$(NAME)]:$(DEF_COLOR)\n"; \
 						fi
-						@percentage=$$(echo "scale=0; $(COMPILED_SRCS) * 100 / $(SRCS_TO_COMPILE)" | bc); \
+						@percentage=$$(if [ $(SRCS_TO_COMPILE) -eq 0 ]; then echo 0; else echo "scale=0; $(COMPILED_SRCS) * 100 / $(SRCS_TO_COMPILE)" | bc; fi); \
 						for frame in $(FRAMES); do \
 							printf "\r$$frame Compiling... [%d/%d] %d%%" $(COMPILED_SRCS) $(SRCS_TO_COMPILE) $$percentage; \
 							sleep $(SLEEP_FRAME); \
